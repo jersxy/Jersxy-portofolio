@@ -38,7 +38,6 @@
             overflow: hidden;
             margin-bottom: 25px;
         }
-        
         .avatar video {
             width: 100%;
             height: 100%;
@@ -113,7 +112,6 @@
             border-radius: 50%;
             display: inline-block;
         }
-         
         .playing {
             animation: pulse 1s infinite alternate;
         }
@@ -130,7 +128,7 @@
     <div class="container">
         <div class="avatar">
             <video id="myVideo" loop muted playsinline>
-                <source src="https://files.catbox.moe/f2sxst.jpg" type="video/mp4">
+                <source src="https://files.catbox.moe/aq00uk.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -170,25 +168,17 @@
         const btn = document.getElementById("playBtn");
         const dot = document.getElementById("dot");
 
-
-        window.addEventListener('load', () => {
-            video.play().catch(err => console.log("Video autoplay diblokir browser sebelum interaksi"));
-        });
-
         function togglePlay() {
             if (music.paused) {
-
                 music.volume = 0.6
                 music.play();
                 
-
-                video.play();
+                video.play().catch(err => console.log("Video gagal play:", err));
                 
-
                 btn.innerHTML = '<span class="pulse-dot playing" id="dot"></span> MUSIC ON';
             } else {
-
                 music.pause();
+                video.pause();
                 btn.innerHTML = '<span class="pulse-dot" id="dot"></span> MUSIC OFF';
             }
         }
