@@ -127,7 +127,8 @@
 
     <div class="container">
         <div class="avatar">
-            <video id="myVideo" loop muted playsinline>
+            <!-- Hapus muted biar ada suara -->
+            <video id="myVideo" loop playsinline>
                 <source src="https://files.catbox.moe/aq00uk.mp4" type="video/mp4">
             </video>
         </div>
@@ -173,6 +174,8 @@
                 music.volume = 0.6
                 music.play();
                 
+                // Set volume video biar nggak ketutup musik
+                video.volume = 0.8;
                 video.play().catch(err => console.log("Video gagal play:", err));
                 
                 btn.innerHTML = '<span class="pulse-dot playing" id="dot"></span> MUSIC ON';
