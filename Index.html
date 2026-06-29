@@ -3,289 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jersxy | Professional Web Services</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Hacked By ./ZerNism</title>
+
     <style>
-        /* --- RESET & VARIABLE --- */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: #131a2c;
-            --accent-js: #f7df1e; /* Warna Khas JS */
-            --accent-java: #f89820; /* Warna Khas Java */
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --gradient-glow: linear-gradient(135deg, #38bdf8, #818cf8);
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* --- NAVBAR --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            background-color: #000;
+            color: #ffffff;
+            font-family: sans-serif, Courier, monospace;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: radial-gradient(circle, #0d0d0d 10%, #000 100%);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: var(--gradient-glow);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .container {
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
         }
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 35px;
-            font-weight: 600;
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 0px solid #ff0000;
+            box-shadow: 0 0 0px rgba(255, 0, 0, 0.5);
+            background: #111;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #ff0000;
+            text-shadow: 0 0 0px rgba(255, 0, 0, 0.7);
+            margin-bottom: 7px;
+            letter-spacing: 2px;
+        }
+
+        .quotes {
+            font-size: 10px;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .ascii-art {
+            color: #ffffff;
+            font-size: 10px;
+            white-space: pre;
+            margin: 5px 0 15px;
+            line-height: 1.2;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .thanks-box {
+            border-top: 1px dashed #ff0000;
+            border-bottom: 1px dashed #ff0000;
+            padding: 15px;
+            margin-bottom: 25px;
+            background: rgba(15, 0, 0, 0.4);
+        }
+
+        .thanks-title {
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .thanks-list {
+            font-size: 12px;
+            color: #aaaaaa;
+            word-spacing: 3px;
+            line-height: 1.5;
+        }
+
+        .btn-audio {
+            background: linear-gradient(45deg, #ff0000, #990000);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: var(--text-main);
+        .btn-audio:hover {
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+            transform: scale(1.05);
         }
 
-        .btn-contact {
-            background: var(--gradient-glow);
-            color: var(--bg-color);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s ease;
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: inline-block;
         }
 
-        .btn-contact:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(129, 140, 248, 0.3);
+        .playing {
+            animation: pulse 1s infinite alternate;
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            position: relative;
-        }
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+                opacity: 0.4;
+            }
 
-        .hero-content {
-            max-width: 700px;
-            z-index: 2;
-        }
-
-        .hero h3 {
-            font-size: 18px;
-            color: #818cf8;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        /* --- SKILLS & SERVICES --- */
-        .services {
-            padding: 100px 8%;
-            background: rgba(255,255,255,0.01);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-weight: 800;
-        }
-
-        .grid-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(129, 140, 248, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .card .icon {
-            font-size: 40px;
-            margin-bottom: 25px;
-        }
-
-        .icon.js { color: var(--accent-js); }
-        .icon.java { color: var(--accent-java); }
-        .icon.web { color: #38bdf8; }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* --- CTA SECTION --- */
-        .cta {
-            padding: 100px 8%;
-            text-align: center;
-            position: relative;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
-            padding: 60px 40px;
-            border-radius: 30px;
-            border: 1px solid rgba(129, 140, 248, 0.2);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 30px 8%;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 768px) {
-            header nav { display: none; } /* Menyederhanakan navigasi di mobile */
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 16px; }
-            .section-title { font-size: 2rem; }
+            to {
+                transform: scale(1.3);
+                opacity: 1;
+                box-shadow: 0 0 10px #fff;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- NAVIGASI -->
-    <header>
-        <div class="logo">JERSXY.</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#layanan">Layanan</a>
-            <a href="#kontak" class="btn-contact">Hubungi Saya</a>
-        </nav>
-    </header>
+    <audio id="myMusic"
+        src="https://d.top4top.io/m_38006zk6l0.mp3""
+        loop></audio>
 
-    <!-- HERO / UTAMA -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h3>Web Developer & Engineer</h3>
-            <h1>Membangun Website Berkinerja Tinggi & Skalabel</h1>
-            <p>Halo, saya Jersxy. Seorang penyedia jasa pembuatan website berpengalaman. Spesialis dalam arsitektur backend kokoh menggunakan <b>Java</b> dan interaksi frontend modern yang interaktif dengan <b>JavaScript</b>.</p>
-            <a href="#kontak" class="btn-contact" style="padding: 15px 35px; font-size: 16px;">Mulai Proyek Kamu</a>
+    <div class="container">
+
+        <div class="avatar">
+            <img src="https://files.catbox.moe/tlmcns.jpg" alt="avatar">
         </div>
-    </section>
 
-    <!-- LAYANAN / KEAHLIAN -->
-    <section class="services" id="layanan">
-        <h2 class="section-title">Layanan & Tech Stack</h2>
-        <div class="grid-services">
-            
-            <!-- JavaScript Card -->
-            <div class="card">
-                <div class="icon js"><i class="fab fa-js-square"></i></div>
-                <h3>Modern JavaScript</h3>
-                <p>Pembuatan website dinamis, SPA (Single Page Application), fitur real-time, hingga optimasi script asynchronous agar website loading secepat kilat.</p>
-            </div>
+        <h1>Hacked By ./ZerNism</h1>
 
-            <!-- Java Card -->
-            <div class="card">
-                <div class="icon java"><i class="fab fa-java"></i></div>
-                <h3>Java Enterprise</h3>
-                <p>Pengembangan sistem backend berskala besar yang aman, stabil, dan siap menangani trafik tinggi. Sangat cocok untuk web aplikasi kustom atau dashboard data.</p>
-            </div>
-
-            <!-- Full Stack Web Card -->
-            <div class="card">
-                <div class="icon web"><i class="fas fa-code"></i></div>
-                <h3>Full-Stack Integration</h3>
-                <p>Integrasi database yang rapi, pembuatan API, sistem keamanan enkripsi data, hingga tampilan UI/UX web yang sepenuhnya responsif di semua perangkat.</p>
-            </div>
-
+        <div class="quotes">
+            “Jangan pernah menganggap remeh satu celah. Hal kecil yang diabaikan hari ini bisa menjadi masalah besar di kemudian hari. Jadikan ini sebagai pelajaran untuk selalu meningkatkan keamanan sistem."
         </div>
-    </section>
 
-    <!-- CTA / KONTAK -->
-    <section class="cta" id="kontak">
-        <div class="cta-box">
-            <h2>Punya Ide Proyek Bagus?</h2>
-            <p>Konsultasikan kebutuhan websitemu sekarang. Kita bangun platform digital terbaik untuk bisnis atau personal branding kamu.</p>
-            <a href="https://wa.me/nomor-whatsapp-kamu" target="_blank" class="btn-contact">
-                <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
-            </a>
+        <div class="ascii-art">
+ _____           _   _ _
+|__  /___ _ __  | \ | (_)
+  / // _ \ '__| |  \| |
+ /|  __/ |    | |\  | |
+/____\___|_|    |_| \_|_|
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Jersxy Digital. All rights reserved.</p>
-    </footer>
+        <div class="thanks-box">
+            <div class="thanks-title">Thanks To Friends:</div>
+
+            <div class="thanks-list">
+                ridho, zvnex505, anon9, alif, Zayn Vortex, kinz, Oby, yann, stenly, wildn, kenzy, pepaya505, narra, FrostByte, NullSpectre, nizar, Kael, ZerNox, Hexor, Kryzor, Zyren, Alvir, Elzano.
+            </div>
+        </div>
+
+        <div class="footer-link">
+            <button class="btn-audio" onclick="togglePlay()" id="playBtn">
+                <span class="pulse-dot"></span>
+                [ TAP TO PLAY ]
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const music = document.getElementById("myMusic");
+        const btn = document.getElementById("playBtn");
+
+        function togglePlay() {
+
+            if (music.paused) {
+
+                music.volume = 0.6;
+                music.play();
+
+                btn.innerHTML =
+                    '<span class="pulse-dot playing"></span> MUSIC ON';
+
+            } else {
+
+                music.pause();
+
+                btn.innerHTML =
+                    '<span class="pulse-dot"></span> MUSIC OFF';
+            }
+        }
+    </script>
 
 </body>
 </html>
